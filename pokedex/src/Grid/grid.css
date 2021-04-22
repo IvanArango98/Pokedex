@@ -20,6 +20,11 @@
     background-image: url("https://www.wallpaperflare.com/static/364/185/316/pok%C3%A9mon-pok%C3%A9-balls-artwork-pokeball-wallpaper.jpg");
     background-size: 495%;
     color:crimson;
+    
+}
+
+.card-img-top
+{   
     cursor:pointer;    
 }
 
@@ -27,4 +32,52 @@
 {
     color:brown;
     text-decoration-line: underline;
+}
+
+.table.table-bordered
+{
+    background-color:whitesmoke;
+}
+
+
+
+.table.table-bordered th
+{
+    background-color:cadetblue;
+}
+
+.Contenedor-Tabla.container hr
+{
+    opacity: 0;
+}
+
+.Contenedor-Tabla.container 
+{
+    height: 40vh;
+}
+
+.Pokemon-card.card
+{
+    margin: auto;  
+    width: 100px;      
+}
+
+.Pokemon-card.card h1
+{font-family: 'Roboto Slab', serif;  
+}
+
+#search-bar-0.form-control
+{
+    width:300px;
+    height:30px;    
+}
+
+#registro.btn.btn-link
+{
+    color: black;
+}
+
+.Pokemon-card img
+{
+    cursor: pointer;
 }
