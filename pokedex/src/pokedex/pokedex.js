@@ -1,87 +1,60 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios'
+import React from 'react';
+import {Container} from 'react-bootstrap'
+import DataGrid from '../Grid/grid'
 import './pokedex.css'
 
-const Pokedex = () =>
-{
-    const [pokemon, setPokemon] = useState("pikachu"); 
-    const [pokemonData, setPokemonData] = useState([]);
-    const [PokemonType, setPokemonType] = useState("")
-
-    const getPokemon = async () =>
-    {
-        const toArray = [];
-        try{
-            const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`
-            const res = await axios.get(url)
-            toArray.push(res.data)
-            setPokemonType(res.data.types[0].type.name)
-            setPokemonData(toArray)
-            console.log(res)
-        }
-        catch(e)
-        {
-            console.log(e)
-        }
-    };
-
-    const handleChange = (e) =>
-    {
-        setPokemon(e.target.value.toLowerCase())
-    }
-
-    const handleSubmit = (e) =>
-    {
-        e.preventDefault();
-        getPokemon();
-    }
-        
-    return (
-        <div className="Dex">
-            <form onSubmit={handleSubmit}>
-            <label>
-                <input type="text" onChange={handleChange} placeholder="Ingrese nombre de pokemon" />
-            </label>
-
-            </form>
-            {
-                pokemonData.map((data) =>
-                {
-                    return(
-                    <div className="container">
-                    <img src={data.sprites["front_default"]}/>
-                    <div className="divTable">
-                        <div className="divTableBody">   
-                        <div className="divTableRow">
-
-                        <div className="divTableCell">Tipo</div> 
-                        <div className="divTableCell">{PokemonType}</div>
-                    </div> 
-
-                    <div className="divTableRow">
-                        <div className="divTableCell">Altura</div> 
-                        <div className="divTableCell">{" "}{Math.round(data.height * 3.9)}</div>
-                    </div> 
-
-                    <div className="divTableRow">
-                        <div className="divTableCell">Peso</div> 
-                        <div className="divTableCell">{""} {Math.round(data.weight / 4.3)} lbs</div>
-                    </div> 
-
-                    <div className="divTableRow">
-                        <div className="divTableCell">Experiencia base</div> 
-                        <div className="divTableCell">{data.base_experience}</div>
-                    </div> 
-                    </div>
-                    </div>
-                    </div>
-                    )
-
-                })}
-        </div>
-    );
+const columns = [
+ {
+  dataField: 'nombre',
+  text: 'nombre'
+}, {
+  dataField: 'tipo',
+  text: 'tipo'
 }
+, {
+    dataField: 'altura',
+    text: 'altura'
+  }
+  , {
+    dataField: 'peso',
+    text: 'peso'
+  }
+  , {
+    dataField: 'experiencia',
+    text: 'experiencia'
+  },
+  , {
+    dataField: 'sprite',
+    text: 'Sprite'
+  }
+];
 
+class Pokedex extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {  }
+  }
+  render() { 
+    return (  
+
+      <Container id="Contenedor">
+      
+      <div className="Titulo">
+        <hr></hr>
+          <h2>Pokedex</h2>      
+          <hr></hr>
+          </div>
+                 
+      <DataGrid
+            columns={columns}            
+            />       
+
+      </Container>
+
+    );
+  }
+}
+ 
 export default Pokedex;
 
  
